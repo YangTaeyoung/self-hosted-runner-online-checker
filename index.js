@@ -7,7 +7,7 @@ async function run() {
         const runnerLabels = runnerLabelsStr.split(/[, ;]+/).map(label => label.trim());
         const includeOrganizationRunners = core.getInput('include-organization-runners') === 'true';
 
-        const octokit = github.getOctokit(process.env.GITHUB_TOKEN);
+        const octokit = github.getOctokit(core.getInput('github-token', { required: true }));
 
         const runners = [];
 
